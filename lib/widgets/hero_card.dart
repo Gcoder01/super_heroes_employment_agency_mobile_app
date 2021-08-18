@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:super_heroes_employment_agency_mobile_app/profile_page.dart';
 
 // ignore: must_be_immutable
 class HeroCard extends StatelessWidget {
@@ -20,72 +21,85 @@ class HeroCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _context = context;
-    return Container(
-      width: MediaQuery.of(context).size.width * 0.9,
-      decoration: BoxDecoration(
-        border: Border(
-          top: BorderSide(),
-          right: BorderSide(),
-          bottom: BorderSide(),
-          left: BorderSide(),
+    return TextButton(
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ProfilePage(
+            heroName: heroName,
+            powers: powers,
+            imgUrl: 'https://www.pixsy.com/wp-content/uploads/2021/04/ben-sweet-2LowviVHZ-E-unsplash-1.jpeg',
+            description: '',
+          )),
+        );
+      },
+      child: Container(
+        width: MediaQuery.of(context).size.width * 0.9,
+        decoration: BoxDecoration(
+          border: Border(
+            top: BorderSide(),
+            right: BorderSide(),
+            bottom: BorderSide(),
+            left: BorderSide(),
+          ),
         ),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              _dataBox(
-                _customText(
-                  'Hero Name',
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                _dataBox(
+                  _customText(
+                    'Hero Name',
+                  ),
+                  isTitle: true,
                 ),
-                isTitle: true,
-              ),
-              _dataBox(
-                _customText(
-                  heroName,
+                _dataBox(
+                  _customText(
+                    heroName,
+                  ),
                 ),
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              _dataBox(
-                _customText(
-                  'Powers',
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                _dataBox(
+                  _customText(
+                    'Powers',
+                  ),
+                  isTitle: true,
                 ),
-                isTitle: true,
-              ),
-              _dataBox(
-                _customText(
-                  powers,
+                _dataBox(
+                  _customText(
+                    powers,
+                  ),
                 ),
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              _dataBox(
-                _customText(
-                  'Rate',
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                _dataBox(
+                  _customText(
+                    'Rate',
+                  ),
+                  isTitle: true,
                 ),
-                isTitle: true,
-              ),
-              _dataBox(
-                _stars(
-                  starsNum,
+                _dataBox(
+                  _stars(
+                    starsNum,
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
