@@ -1,0 +1,32 @@
+[
+    {
+        "hero_name": "detective conan",
+        "description": "Case Closed, also known as Detective Conan (Japanese: 名探偵コナン, Hepburn: Meitantei Konan), is a Japanese detective manga series written and illustrated by Gosho Aoyama. ",
+        "powers": "assembly debuging",
+        "img_url": "https://live.staticflickr.com/6222/6304408478_757b554c3f.jpg",
+        "rating": {
+            "number_of_raters": 90,
+            "rating_persent": 85.9975
+        }
+    },
+    {
+        "hero_name": "detective 11conan",
+        "description": "11Case Closed, also known as Detective Conan (Japanese: 名探偵コナン, Hepburn: Meitantei Konan), is a Japanese detective manga series written and illustrated by Gosho Aoyama. ",
+        "powers": "11assembly debuging",
+        "img_url": "https://live.staticflickr.com/6222/6304408478_757b554c3f.jpg",
+        "rating": {
+            "number_of_raters": 90,
+            "rating_persent": 85.9975
+        }
+    },
+    {
+        "hero_name": "22detective conan",
+        "description": "22Case Closed, also known as Detective Conan (Japanese: 名探偵コナン, Hepburn: Meitantei Konan), is a Japanese detective manga series written and illustrated by Gosho Aoyama. ",
+        "powers": "22assembly debuging",
+        "img_url": "https://live.staticflickr.com/6222/6304408478_757b554c3f.jpg",
+        "rating": {
+            "number_of_raters": 90,
+            "rating_persent": 85.9975
+        }
+    }
+]
