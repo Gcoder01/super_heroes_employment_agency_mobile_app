@@ -1,30 +1,34 @@
 //singlton
-import 'dart:convert';
 
-import 'package:flutter/services.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:super_heroes_employment_agency_mobile_app/logic/hero.dart';
+import 'package:super_heroes_employment_agency_mobile_app/logic/rating.dart';
 
 class Database {
   static final Database instanse = Database._();
+  final List<Hero> _list = [];
   Database._() {
     readDB();
   }
 
   readDB() async {
-    //const JsonCodec json = JsonCodec();
-
-    /*var*/ jsonText = await rootBundle.loadString('assets/data.json');
-    jsonText = json.decode(jsonText);
-    print(jsonText);
-    print(111111111111);
+    CollectionReference collectionRef =
+        FirebaseFirestore.instance.collection('heros');
+    QuerySnapshot querySnapshot = await collectionRef.get();
+    var allData = querySnapshot.docs.map((doc) => doc).toList();
+    print(allData.toString());
+    for (var i = 0; i < allData.length; i++) {
+      _list.add(Hero(
+          allData[i].id,
+          allData[i]["hero_name"],
+          allData[i]["powers"],
+          new Rating(allData[i]["rating"]["number_of_raters"],
+              allData[i]["rating"]["rating_persent"]),
+          allData[i]["description"]));
+    }
   }
-}
-  var jsonText;
 
-main() {
-  var x = Database.instanse;
-      print(9);
-      print(x.readDB());
-      print(jsonText);
-      print(00);
-
+  List<Hero> get datalist {
+    return _list;
+  }
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:super_heroes_employment_agency_mobile_app/widgets/hero_card.dart';
+import 'package:super_heroes_employment_agency_mobile_app/logic/db_endpoints.dart';
 import 'package:super_heroes_employment_agency_mobile_app/widgets/search_widget.dart';
+
+import 'logic/heros_list.dart';
 
 class HerosPage extends StatelessWidget {
   const HerosPage({Key? key}) : super(key: key);
@@ -12,13 +14,16 @@ class HerosPage extends StatelessWidget {
       body: Column(
         children: [
           SearchWidget(),
-          HeroCard(
-            heroName: 'Haitham',
-            powers: 'debuging',
-            starsNum: 3,
+          SizedBox(
+            height: 400,
+            child: ListView(
+              children:
+                  HerosList(Database.instanse.datalist).herosCardsSortedByName,
+            ),
           ),
         ],
       ),
+      floatingActionButton: FloatingActionButton(onPressed: ()=>print(1),child: Icon(Icons.add),) ,
     );
   }
 }
