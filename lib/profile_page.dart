@@ -17,20 +17,50 @@ class ProfilePage extends StatelessWidget {
       appBar: AppBar(),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            ClipRRect(
-              child: Image.network(
-                imgUrl,
-                height: 50,
-                width: 50,
+            Padding(
+              padding: const EdgeInsets.all(30.0),
+              child: ClipRRect(
+                child: Image.network(imgUrl,
+                    height: MediaQuery.of(context).size.width * 0.7,
+                    width: MediaQuery.of(context).size.width * 0.7,
+                    fit: BoxFit.cover),
+                borderRadius: BorderRadius.circular(
+                    MediaQuery.of(context).size.width * 0.35),
               ),
-              borderRadius: BorderRadius.circular(25),
             ),
-            Text('Hero name: $heroName'),
-            Text('Description:\n$description'),
-            Text('Powers:\n$powers'),
+            Container(
+              padding: const EdgeInsets.all(20.0),
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Hero name: $heroName',
+                style: TextStyle(
+                  fontSize: 20,
+                ),
+              ),
+            ),
+            Container(
+              child: Text(
+                'Description:\n$description',
+                style: TextStyle(
+                  fontSize: 20,
+                ),
+              ),
+              padding: const EdgeInsets.all(20.0),
+              alignment: Alignment.centerLeft,
+            ),
+            Container(
+              child: Text(
+                'Powers:\n$powers',
+                style: TextStyle(
+                  fontSize: 20,
+                ),
+              ),
+              padding: const EdgeInsets.all(20.0),
+              alignment: Alignment.centerLeft,
+            ),
           ],
         ),
       ),

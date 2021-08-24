@@ -6,14 +6,16 @@ class Hero {
   late String _power;
   late Rating _rating;
   late String _description;
+  late String _imgUrl;
 
-  Hero(
-      String id, String name, String power, Rating rating, String description) {
+  Hero(String id, String name, String power, Rating rating, String description,
+      String imgUrl) {
     _id = id;
     _name = name;
     _power = power;
     _rating = rating;
     _description = description;
+    _imgUrl = imgUrl;
   }
 
   String get id {
@@ -22,6 +24,10 @@ class Hero {
 
   String get name {
     return _name;
+  }
+
+  String get imgUrl {
+    return _imgUrl;
   }
 
   void set name(String name) {

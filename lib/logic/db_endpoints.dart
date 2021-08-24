@@ -18,13 +18,16 @@ class Database {
     var allData = querySnapshot.docs.map((doc) => doc).toList();
     print(allData.toString());
     for (var i = 0; i < allData.length; i++) {
-      _list.add(Hero(
-          allData[i].id,
-          allData[i]["hero_name"],
-          allData[i]["powers"],
-          new Rating(allData[i]["rating"]["number_of_raters"],
-              allData[i]["rating"]["rating_persent"]),
-          allData[i]["description"]));
+      _list.add(
+        Hero(
+            allData[i].id,
+            allData[i]["hero_name"],
+            allData[i]["powers"],
+            new Rating(allData[i]["rating"]["number_of_raters"],
+                allData[i]["rating"]["rating_persent"]),
+            allData[i]["description"],
+            allData[i]["img_url"]),
+      );
     }
   }
 

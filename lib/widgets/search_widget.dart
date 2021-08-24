@@ -2,8 +2,11 @@ import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class SearchWidget extends StatefulWidget {
-  const SearchWidget({Key? key}) : super(key: key);
+  var onTextChange;
+
+  SearchWidget(onTextChange, {Key? key}) : super(key: key);
 
   @override
   _SearchWidgetState createState() => _SearchWidgetState();
@@ -11,10 +14,13 @@ class SearchWidget extends StatefulWidget {
 
 class _SearchWidgetState extends State<SearchWidget> {
   bool _switchIsSelected = true;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.05),
+      padding: EdgeInsets.all(
+        MediaQuery.of(context).size.width * 0.05,
+      ),
       child: Container(
         child: Column(
           children: [
@@ -22,9 +28,16 @@ class _SearchWidgetState extends State<SearchWidget> {
               decoration: InputDecoration(
                 hintText: 'Search',
                 prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(borderSide: BorderSide(color: Colors.black),)
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.black,
+                  ),
+                ),
               ),
-              
+              onChanged: widget.onTextChange,
+            ),
+            SizedBox(
+              height: 20,
             ),
             Row(
               children: [

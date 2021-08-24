@@ -8,7 +8,7 @@ class HeroCard extends StatelessWidget {
     fontSize: 18,
   );
 
-  String heroName, powers;
+  String heroName, powers, imgUrl , description;
   int starsNum;
 
   HeroCard({
@@ -16,6 +16,8 @@ class HeroCard extends StatelessWidget {
     required this.heroName,
     required this.powers,
     required this.starsNum,
+    required this.imgUrl, required this.description,
+
   }) : super(key: key);
 
   @override
@@ -25,12 +27,13 @@ class HeroCard extends StatelessWidget {
       onPressed: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => ProfilePage(
-            heroName: heroName,
-            powers: powers,
-            imgUrl: 'https://www.pixsy.com/wp-content/uploads/2021/04/ben-sweet-2LowviVHZ-E-unsplash-1.jpeg',
-            description: '',
-          )),
+          MaterialPageRoute(
+              builder: (context) => ProfilePage(
+                    heroName: heroName,
+                    powers: powers,
+                    imgUrl: imgUrl,
+                    description: description,
+                  )),
         );
       },
       child: Container(
