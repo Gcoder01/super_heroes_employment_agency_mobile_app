@@ -15,7 +15,22 @@ class _HerosPageState extends State<HerosPage> {
   String search = '';
   @override
   Widget build(BuildContext context) {
-    
+    var searchwidget = SearchWidget(
+      (val) {
+        search = val;
+        setState(() {});
+      },
+      ()=>setState(() {})
+    );
+    var herosList = searchwidget.switchIsSelected
+        ? HerosList(
+            Database.instanse.datalist,
+            search: search.trim(),
+          ).herosCardsSortedByPower
+        : HerosList(
+            Database.instanse.datalist,
+            search: search.trim(),
+          ).herosCardsSortedByName;
     return Scaffold(
       appBar: AppBar(),
       body: Container(
@@ -23,17 +38,11 @@ class _HerosPageState extends State<HerosPage> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            SearchWidget(
-              (val) {
-                
-                setState((){search = val;print(1);});
-              },
-            ),
+            searchwidget,
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.67,
               child: ListView(
-                children: HerosList(Database.instanse.datalist, search: search.trim(),)
-                    .herosCardsSortedByName,
+                children: herosList,
               ),
             ),
           ],

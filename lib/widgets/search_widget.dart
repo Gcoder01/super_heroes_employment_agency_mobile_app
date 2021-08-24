@@ -4,17 +4,16 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class SearchWidget extends StatefulWidget {
-  var onTextChange;
+  var onTextChange, parenSetState;
+  bool switchIsSelected = false;
 
-  SearchWidget(onTextChange, {Key? key}) : super(key: key);
+  SearchWidget(this.onTextChange, this.parenSetState,{Key? key}) : super(key: key);
 
   @override
   _SearchWidgetState createState() => _SearchWidgetState();
 }
 
 class _SearchWidgetState extends State<SearchWidget> {
-  bool _switchIsSelected = true;
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -45,11 +44,13 @@ class _SearchWidgetState extends State<SearchWidget> {
                   'Sort By Power',
                 ),
                 CupertinoSwitch(
-                  value: _switchIsSelected,
+                  value: widget.switchIsSelected,
                   onChanged: (value) {
+                    
                     setState(() {
-                      _switchIsSelected = !_switchIsSelected;
-                    });
+                      widget.switchIsSelected = !widget.switchIsSelected;
+                      print(widget.switchIsSelected);
+                    });widget.parenSetState;
                   },
                   activeColor: Color(0xff17b09e),
                 ),
